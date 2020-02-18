@@ -8,14 +8,14 @@ namespace AccountSample
         {
             Console.WriteLine("Pick an account to explore.");
 
-            //Staff: bookstore, orders, register, requirements
+            //Staff: list of all books and materials, bookstore orders, class materials required, book buy back
             //with infor on: studdent account / materials for each class or professor
 
-            //Professors: grades, date, time, review, location, class, credit, student limit
+            //Professors: create/edit grades, create/edit class(date/time(no overlapping)/materials/credits/requirements/location/description/student max)
             //with info on: bookstore, student account IN CLASS only
 
-            //Students: personal info, gpa, status, major, prerecs, tuition/scholarship
-            //with info on: searches for all classes & material & reviews
+            //Students: personal info, gpa / grade history, tuition/scholarship, class schedule(no overlapping)
+            //with info on: list/edit lists of classes and material
         }
     }
 }
