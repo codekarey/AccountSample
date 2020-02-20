@@ -1,21 +1,56 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AccountSample
 {
     class Program
     {
+            //list of all students and accounts
+            static List<Student> studentList = new List<Student>();
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Pick an account to explore.");
+            //read/write txt lists
+            StudentMenu.AllStudents(studentList);
 
-            //Staff: list of all books and materials, bookstore orders, class materials required, book buy back
-            //with infor on: studdent account / materials for each class or professor
 
-            //Professors: create/edit grades, create/edit class(date/time(no overlapping)/materials/credits/requirements/location/description/student max)
-            //with info on: bookstore, student account IN CLASS only
+            bool main = true;
+            while (main)
+            {
+                Console.WriteLine("Enter one of the following to start exploring: ");
+                string menu = Get("[ Professor ] [ Student ] [ Store ]").ToLower();
+                switch (menu)
+                {
+                    //main//
+                    case "professor": //Create new, add class, update grades, user account(show current students and classes)
 
-            //Students: personal info, gpa / grade history, tuition/scholarship, class schedule(no overlapping)
-            //with info on: list/edit lists of classes and material
+                        break;
+                    //main//
+                    case "student": //Create new, search classes, add classes, pay tuition, get materials, user account(show current classes, gpa, rented books? and grades)
+
+                        //student menu
+                        Console.WriteLine("");
+                        switch (Get(""))
+                        {
+
+                        }
+                            
+                        break;
+                   //main//
+                   case "store": 
+
+                        break;
+                    default:
+                        menu = Get("Sorry, please try one again: Professor, Student, or Store.");
+                        break;
+                }
+            }
+
+        }
+        public static string Get(string prompt)
+        {
+            Console.WriteLine(prompt);
+            return Console.ReadLine();
         }
     }
 }
