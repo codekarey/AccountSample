@@ -12,7 +12,7 @@ namespace AccountSample
         {
             //read/write txt lists
             StudentMenu.AllStudents(studentList);
-
+            
 
             bool main = true;
             while (main)
@@ -27,12 +27,27 @@ namespace AccountSample
                         break;
                     //main//
                     case "student": //Create new, search classes, add classes, pay tuition, get materials, user account(show current classes, gpa, rented books? and grades)
-
+                        bool sMenu = true;
                         //student menu
                         Console.WriteLine("");
-                        switch (Get(""))
+                        switch (Get("[ Classes ]  [ Account ]  [ Materials ]").ToLower())
                         {
+                            case "classes":
 
+                                break;
+                            case "account":
+
+                                break;
+                            case "materials":
+
+                                break;
+                            default:
+                                string again = Get("Sorry, please try again or enter X to return to the main menu.").ToLower();
+                                if (again=="x")
+                                {
+                                    sMenu = false;
+                                }
+                                break;
                         }
                             
                         break;
