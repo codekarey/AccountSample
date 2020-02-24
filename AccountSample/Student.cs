@@ -4,46 +4,34 @@ using System.Text;
 
 namespace AccountSample
 {
-    class Student
+    public class Student : Person
     {
-        public string Id { get; set; }
-        public string Fname { get; set; }
-        public string Lname { get; set; }
-        public string Email { get; set; }
-        private string Password { get; set; }
         public string Gpa { get; set; }
         public int Tuition {get; set;}
-        public bool TuitionStatus { get; set; }
+        public string Transcript { get; set; }
         public string StudentStore { get; set; }
-        public bool StudentStoreStatus { get; set; }
+        public bool RentStatus { get; set; }
 
-        
-        public Student()
-        {
-            Gpa = "";
-            Tuition = 0;
-            StudentStore = "";
-            StudentStoreStatus = true;
 
-        }
-
-        public Student(string id, string fname, string lname, string email, string password, string gpa, int tuition, bool tuitionStatus, string studentStore, bool studentStorestatus)
+        public Student(string id, string fname, string lname, string email, string pw, int tuition, string transcript, string studentStore, bool rentStatus)
+            : base(id, fname, lname, email, pw)
         {
             Id = id;
-            Fname = fname;
-            Lname = lname;
+            FName = fname;
+            LName = lname;
             Email = email;
-            Password = password;
-            Gpa = gpa;
-            Tuition = tuition;
-            TuitionStatus = tuitionStatus;
-            StudentStore = studentStore;
-            StudentStoreStatus = studentStorestatus;
+            Pw = pw;
+            Gpa = "GPA: ";
+            Tuition = 0;
+            Transcript = "Transcript: ";
+            StudentStore = "Empty";
+            RentStatus = false;
+
         }
 
         public override string ToString()
         {
-            return $"{Id}|{Fname} {Lname}|{Email}|{Gpa}|{Tuition}|{TuitionStatus}|{StudentStore}|{StudentStoreStatus}";
+            return $"{Id}|{FName}|{LName}|{Email}|{Pw}|{Gpa}|{Tuition}|{Transcript}|{StudentStore}|{RentStatus}";
         }
     }
 }

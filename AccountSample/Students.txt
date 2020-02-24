@@ -1,0 +1,3 @@
+{Id}|{FName}|{LName}|{Email}|{Pw}|{Gpa}|{Tuition}|{Transcript}|{StudentStore}|{RentStatus}
+Larry.Berry|Larry|Berry|Berry@student.com|lberrypw|GPA: |0|Transcript: |Empty|False
+Marry.Jane|Marry|Jane|Jane@student.com|M.J.password|GPA: |0|Transcript: |Empty|False
