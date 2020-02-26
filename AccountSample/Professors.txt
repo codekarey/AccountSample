@@ -1,4 +1,4 @@
-﻿Don.Fellow|Don|Fellow|Fellow@professor.com|dFpassword|Classes: 
+Don.Fellow|Don|Fellow|Fellow@professor.com|dFpassword|Classes: 
 Bill.Nye|Bill|Nye|Nye@professor.com|BNpw|Classes: 
 Mister.Feeny|Mister|Feeny|Feeny@professor.com|MFpw|Classes: 
 This.Guy|This|Guy|Guy@professor.com|tgpw|Classes: 
@@ -7,3 +7,4 @@ Kobi.Dog|Kobi|Dog|Dog@professor.com|kdpw|Classes:
 A.B|A|B|B@professor.com|q|Classes: 
 New.Guy|New|Guy|Guy@professor.com|ngpw|Classes: 
 t.t|t|t|t@professor.com|t|Classes: 
+Bob.Bob|Bob|Bob|Bob@professor.com|bob|Classes: 

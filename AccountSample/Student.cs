@@ -13,7 +13,6 @@ namespace AccountSample
         public string StudentStore { get; set; }
         public bool RentStatus { get; set; }
 
-
         public Student(string id, string fname, string lname, string email, string pw, int gpa, int tuition, string transcript, string studentStore, bool rentStatus)
             : base(id, fname, lname, email, pw)
         {
@@ -29,7 +28,6 @@ namespace AccountSample
             RentStatus = rentStatus;
 
         }
-
 
         public override string ToString()
         {

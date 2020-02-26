@@ -17,11 +17,15 @@ namespace AccountSample
 
             StudentMenu.StudentStream(studentList);
             MenuProf.ProfStream(professorList);
-            
+            ClassMenu.ClassStream(classList);
             bool loop = true;
-            bool type = false;
             while (loop)
             {
+
+                StudentMenu.Update(studentList);
+                MenuProf.Update(professorList);
+                ClassMenu.Update(classList);
+
                 Console.WriteLine("Enter one of the following to start exploring: ");
                 string create = Get("[ New Account ]  [ Log In ]").ToLower();
                 switch (create)
@@ -33,8 +37,6 @@ namespace AccountSample
                         break;
                     case "log in":
                     case "login":
-                        //string proID = Login();
-                        //Console.WriteLine(proID);
                         string user = Get("User Id (Firstname.Lastname):");
                         string uId;
                         foreach (Student s in studentList)
@@ -54,40 +56,40 @@ namespace AccountSample
                             }
                         }
                         break;
-                    default:break;
+                    default: break;
                 }
                 //profmenu
-                if(thisProf != null)
+                if (thisProf != null)
                 {
                     bool pMenu = true;
                     while (pMenu)
                     {
                         //Create new, add class, update grades, user account(show current students and classes)
-
-                        string pick = Get("[ Create Class ]  [ My Classes ]  [ My Students ]   [ Edit Grades ]  [ Exit ]").ToLower();
+                        ClassMenu.Update(classList);
+                        string pick = Get("[ Create Class ]  [ My Classes ]  [ My Students ]   [ Exit ]").ToLower();
                         switch (pick)
                         {
                             case "create class":
                                 Class newClass = NewClass(thisProf);
                                 ClassMenu.AddClass(newClass);
-                                ClassMenu.Update(classList);
+                                
                                 break;
 
                             case "my classes":
+                                ClassMenu.ClassStream(classList);
                                 foreach (Class c in classList)
                                 {
-                                    if (c.ProfPw == Get("Password"))
+                                    Console.WriteLine("-");
+                                    if (c.ProfId == thisProf.Id)
                                     {
-                                        Console.WriteLine(c);
+                                        Console.WriteLine(c.Name + " ] ID: " + c.ClassId + " |  Description: " + c.Description + " |\n" +
+                                        "Date: " + c.DateStart.ToShortDateString() + " - " + c.DateEnd.ToShortDateString() + " | " +
+                                        "Time: " + c.Time.ToShortTimeString() + " - " + c.Time.Subtract(c.DateSpan).ToShortTimeString() + " | Location: " + c.Location + " |\n" +
+                                        "Prerequisites: " + c.CrecId + "  | Credits: " + c.Credits + " | Tuition: " + c.Tuition + "\n-");
                                     }
                                 }
                                 break;
-
                             case "my students":
-
-                                break;
-
-                            case "edit grades":
 
                                 break;
                             case "exit":
@@ -99,36 +101,45 @@ namespace AccountSample
                     }
                 }
                 //student menu
-                else if(thisStudent != null)
+                else if (thisStudent != null)
                 {
                     //Create new, search classes, add classes, pay tuition, get materials, user account(show current classes, gpa, rented books? and grades)
                     bool sMenu = true;
                     bool paid;
                     while (sMenu)
                     {
-                        switch (Get("[ Classes ]  [ Account ]  [ Materials ]").ToLower())
+                        //StudentMenu.Update(studentList);
+                        //ClassMenu.Update(classList);
+                        switch (Get("[ Classes ]  [ Account ]").ToLower())
                         {
                             case "classes":
                                 //if classCheck=true:add to StudentMenu(save updates to list to show in account details)
                                 ClassMenu.ViewClasses();
+                                //ClassMenu.ClassStream(classList);
+                                string addClass = Get("Enter the Class Id you want to add to your account.");
+                                foreach (Class c in classList)
+                                {
+                                    if (addClass == c.ClassId)
+                                    {
+                                        StudentMenu.StudentClass(classList, studentList, thisStudent, addClass);
+
+                                        Console.WriteLine("You have added this class to your account\nBefore it is added to your transcript you need to pay your tuition.");
+                                    }
+                                }
                                 break;
                             case "account":
-                                //StudentMenu.StudentStream(studentList);
+                                StudentMenu.StudentStream(studentList);
                                 string pass = Get("Enter your password");
                                 foreach (Student s in studentList)
                                 {
                                     if (pass == s.Pw)
                                     {
                                         Console.WriteLine("\nWelcome to your account " + s.FName + "\n" +
-                                        "Transcript: " + s.Transcript + "\t GPA: " + s.Gpa + "\n" +
-                                        "Store status: " + s.StudentStore + "\t Rent Status: " + s.RentStatus);
+                                        "Transcript: " + s.Transcript + "\t GPA: " + s.Gpa);
                                         //Payments
+                                        StudentMenu.Payments(Get("\n[ Tuition ]").ToLower(), thisStudent, studentList);
                                     }
                                 }
-
-                                break;
-                            case "materials":
-
                                 break;
                             default:
                                 string again = Get("Sorry, please try again or enter X to return to the main menu.").ToLower();
@@ -140,11 +151,8 @@ namespace AccountSample
                         }
                     }
                 }
-                
             }
         }
-
-
         public static string Get(string prompt)
         {
             Console.WriteLine(prompt);
@@ -189,50 +197,12 @@ namespace AccountSample
             double min = double.Parse(Get("Length of class in # of minutes:"));
             TimeSpan dateSpan = time - time.AddMinutes(min);
             string location = Get("Location");
-            string crecId = Get("Prerequisite (Class Name)");
+            string crecId = Get("Prerequisite [ Yes : ClassID ] or [ No : X ])");
             int grade = 0;
             int max = int.Parse(Get("The max # of students for this class"));
-            Class newClass = new Class(classId, profId, profEmail, profPw, name, description, credits, tuition, dateStart, dateEnd, dateSpan, time, location, crecId, grade, max);
+            Class newClass = new Class(classId, profId, profEmail, profPw, name, description, credits, tuition, dateStart, dateEnd, dateSpan, time, location, crecId, grade, max,"");
             return newClass;
         }
-        //finds and returns matching studentID from studentList
-        public static Student StudentById()
-        {
-            string id = Get("Confirm your Id.");
-            foreach (Student s in studentList)
-            {
-                if (s.Id == id)
-                {
-                    return s;
-                }
-            }
-            return null;
-        }
-
-        //public static string Login()
-        //{
-        //    string user = Get("User Id (Firstname.Lastname):").ToLower();
-        //    string uId="";
-        //    foreach (Student s in studentList)
-        //    {
-        //        if (user == s.Id.ToLower())
-        //        {
-        //            thisStudent = s;
-        //            uId = s.Id;
-        //        }
-        //    }
-        //    foreach (Professor p in professorList)
-        //    {
-        //        if (user == p.Id)
-        //        {
-        //            thisProf = p;
-        //            uId = p.Id;
-        //        }
-        //    }
-        //    return uId;
-        //}
-
-
         public static string Create()
         {
             string type = Get("[ Professor ] [ Student ]");

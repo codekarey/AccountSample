@@ -43,40 +43,39 @@ namespace AccountSample
             }
             return newStudent;
         }
-        //register for class and save changes when classCheck==true
-        public static void StudentClasses(Student student, List<Class> allClasses)
+        public static void StudentClass(List<Class> classList, List<Student> students, Student s, string cID)
         {
             //if date/time, prereq, maxstudent all checkout: can add student id to class list and maxstudent-1 (in ClassMenu)
             //list of student classes for account and detailed information
-            bool another = true;
-            while (another)
+            foreach (Class c in classList)
             {
-
-                Console.WriteLine("Enter the class name or Id to add to your account.");
-                string find = Console.ReadLine().ToLower();
-
-                bool match = false;
-                    //update tuition and tuitionStatus
-                    foreach(Class c in allClasses)
-                    {
-                        if ((find == c.ClassId)||find==c.Name.ToLower())
-                        {
-                            student.Tuition =+ c.Tuition;
-                            
-                            student.Transcript=student.Transcript+"&\n"+(c.ClassId.ToString());
-                        }
-                    }
-                
-                if (!match)
+                if (cID == c.ClassId&& c.Max>=0)
                 {
-                    Console.WriteLine("Sorry, there is not a class with that ID");
+                    s.Tuition = +c.Tuition;
+                    if(s.Transcript=="No History")
+                    {
+                        s.Transcript = "&" + c.ClassId;
+                    }
+                    else if (s.Transcript.StartsWith("&"))
+                    {
+                        s.Transcript += "&" + c.ClassId;
+                    }
+                    Update(students);
+                    if (c.Students == "")
+                    {
+                        c.Students = "&" + s.Id;
+                    }
+                    else if (c.Students.StartsWith("&"))
+                    {
+                        c.Students += "&"+s.Id;
+                    }
+                    c.Max = c.Max-1;
+                    ClassMenu.Update(classList);
                 }
             }
-
-            
         }
         //student tuition and store payments
-        public static bool Payments(string option, Student thisStudent)
+        public static bool Payments(string option, Student thisStudent, List<Student> studentList)
         {
             bool paid=false;
             if (option == "tuition")
@@ -87,6 +86,7 @@ namespace AccountSample
                     thisStudent.Tuition = 0;
                     paid = true;
                     Console.WriteLine("Thank you.\nTuition Due: "+thisStudent.Tuition);
+                    Update(studentList);
                 }
             }
             if (option == "store")
@@ -103,7 +103,7 @@ namespace AccountSample
 
         public static void Update(List<Student> students)
         {
-            using (StreamWriter writer = new StreamWriter("../../../Students.txt", true))
+            using (StreamWriter writer = new StreamWriter("../../../Students.txt", false))
             {
                 foreach(Student s in students)
                 {

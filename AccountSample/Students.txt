@@ -1,4 +1,8 @@
 Nacy.Drew|Nacy|Drew|Drew@student.com|NDpw|0|0|No History|No History|False
 Fox.Molder|Fox|Molder|Molder@student.com|FMpw|0|0|No History|No History|False
 New.Kid|New|Kid|Kid@student.com|nkpw|0|0|No History|No History|False
-a.a|a|a|a@student.com|a|0|0|No History|No History|False
+a.a|a|a|a@student.com|a|0|0|&PhysicsFeeny|No History|False
+Nacy.Drew|Nacy|Drew|Drew@student.com|NDpw|0|0|No History|No History|False
+Fox.Molder|Fox|Molder|Molder@student.com|FMpw|0|0|No History|No History|False
+New.Kid|New|Kid|Kid@student.com|nkpw|0|0|No History|No History|False
+a.a|a|a|a@student.com|a|0|1200|&PhysicsFeeny|No History|False

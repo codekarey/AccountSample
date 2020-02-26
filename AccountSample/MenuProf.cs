@@ -21,7 +21,7 @@ namespace AccountSample
             reader.Close();
             return allProf;
         }
-
+        
         public static Professor AddProf(Professor newProf)
         {
             using (StreamWriter writer = new StreamWriter("../../../Professors.txt", true))
@@ -33,7 +33,7 @@ namespace AccountSample
 
         public static void Update(List<Professor> allProf)
         {
-            using (StreamWriter writer = new StreamWriter("../../../Professors.txt", true))
+            using (StreamWriter writer = new StreamWriter("../../../Professors.txt", false))
             {
                 foreach (Professor p in allProf)
                 {

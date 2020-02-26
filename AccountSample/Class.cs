@@ -22,10 +22,11 @@ namespace AccountSample
         public string CrecId { get; set; }
         public int Grade { get; set; }
         public int Max { get; set; }
+        public string Students { get; set; }
      
 
         public Class(string classId, string profId, string profEmail, string profPw, string name, string description, int credits, int tuition,
-            DateTime dateStart, DateTime dateEnd, TimeSpan dateSpan, DateTime time, string location, string crecId, int grade, int max)
+            DateTime dateStart, DateTime dateEnd, TimeSpan dateSpan, DateTime time, string location, string crecId, int grade, int max, string students)
         {
             ClassId = classId;
             ProfId = profId;
@@ -43,11 +44,12 @@ namespace AccountSample
             CrecId = crecId;
             Grade = grade;
             Max = max;
+            Students = students;
         }
 
         public override string ToString()
         {
-            return $"{ClassId}|{ProfId}|{ProfEmail}|{ProfPw}|{Name}|{Description}|{Credits}|{Tuition}|{DateStart}|{DateEnd}|{DateSpan}|{Time}|{Location}|{CrecId}|{Max}|{Grade}";
+            return $"{ClassId}|{ProfId}|{ProfEmail}|{ProfPw}|{Name}|{Description}|{Credits}|{Tuition}|{DateStart}|{DateEnd}|{DateSpan}|{Time}|{Location}|{CrecId}|{Max}|{Grade}|{Students}";
         }
     }
 }
