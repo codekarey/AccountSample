@@ -27,13 +27,14 @@ namespace AccountSample
         {
             List<Class> classes = new List<Class>();
             ClassStream(classes);
-            int i = 1;
-            Console.WriteLine("Class\t|\tClass ID\t|\t And more.....");
+            Console.WriteLine("-\t-\t-\t-\t-\t-\t-\t-\t-\t-");
             foreach (Class c in classes)
             {
-                Console.WriteLine(c.Name+"\t\t"+c.ClassId);
-                i++;
+                Console.WriteLine(c.Name+" ] ID: "+c.ClassId+" |  Description: "+c.Description+" |\n" +
+                    "Date: "+c.DateStart.ToShortDateString()+" - "+c.DateEnd.ToShortDateString()+" | Time: "+c.Time.ToShortTimeString()+" - "+c.Time.Subtract(c.DateSpan).ToShortTimeString()+" |\n" +
+                    "Prerequisites: " + c.CrecId + " | Location: "+c.Location+" | Credits: "+c.Credits+" | Tuition: "+c.Tuition+"\n-");
             }
+            
         }
         public static Class AddClass(Class newClass)
         {

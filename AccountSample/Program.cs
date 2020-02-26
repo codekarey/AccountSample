@@ -110,6 +110,7 @@ namespace AccountSample
                         {
                             case "classes":
                                 //if classCheck=true:add to StudentMenu(save updates to list to show in account details)
+                                ClassMenu.ViewClasses();
                                 break;
                             case "account":
                                 //StudentMenu.StudentStream(studentList);
