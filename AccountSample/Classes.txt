@@ -1,1 +1,5 @@
-﻿
+﻿ChemMan|Cam.Man|Man@professor.com|cmpw|Chem|Learn all about chem|4|1200|2/25/2020 12:00:00 AM|4/25/2020 12:00:00 AM|-03:10:00|2/25/2020 9:00:00 AM|Online|N/A|50|0
+DogsDog|Kobi.Dog|Dog@professor.com|kdpw|Dogs|Learn about dogs|2|600|2/25/2020 12:00:00 AM|5/1/2020 12:00:00 AM|-01:00:00|2/25/2020 10:00:00 AM|Online|None|10|0
+MathGuy|New.Guy|Guy@professor.com|ngpw|Math|Learn about numbers.|4|1200|1/12/2020 12:00:00 AM|4/20/2020 12:00:00 AM|-02:00:00|2/25/2020 1:00:00 PM|Online|No|40|0
+qq|q.q|q@professor.com|q|q|q|2|600|1/8/2020 12:00:00 AM|8/5/2020 12:00:00 AM|-00:40:00|2/25/2020 7:00:00 AM|Online|No|40|0
+Data ScienceNye|Bill.Nye|Nye@professor.com|BNpw|Data Science|It will teach you about methodology involved in tackling data science problems. The specialization also provides knowledge of relational database concepts and the use of SQL to query databases. Learners will complete hands-on labs and projects to apply their newly acquired skills and knowledge.|4|1200|2/26/2020 12:00:00 AM|3/26/2020 12:00:00 AM|-02:00:00|2/26/2020 6:00:00 AM|Online|No|100|0

@@ -1,3 +1,4 @@
-{Id}|{FName}|{LName}|{Email}|{Pw}|{Gpa}|{Tuition}|{Transcript}|{StudentStore}|{RentStatus}
-Larry.Berry|Larry|Berry|Berry@student.com|lberrypw|GPA: |0|Transcript: |Empty|False
-Marry.Jane|Marry|Jane|Jane@student.com|M.J.password|GPA: |0|Transcript: |Empty|False
+Nacy.Drew|Nacy|Drew|Drew@student.com|NDpw|0|0|No History|No History|False
+Fox.Molder|Fox|Molder|Molder@student.com|FMpw|0|0|No History|No History|False
+New.Kid|New|Kid|Kid@student.com|nkpw|0|0|No History|No History|False
+a.a|a|a|a@student.com|a|0|0|No History|No History|False

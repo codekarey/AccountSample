@@ -4,9 +4,12 @@ using System.Text;
 
 namespace AccountSample
 {
-    class Class : Person
+    class Class
     {
         public string ClassId { get; set; }
+        public string ProfId { get; set; }
+        public string ProfEmail { get; set; }
+        public string ProfPw { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int Credits { get; set; }
@@ -21,17 +24,17 @@ namespace AccountSample
         public int Max { get; set; }
      
 
-        public Class(string classId, string id, string name, string description, int credits, string fName, string lName, string email, string pw,
-            DateTime dateStart, DateTime dateEnd, TimeSpan dateSpan, DateTime time, DateTime officeHours, string location, string crecId, int grade, int max)
-            : base(id, fName, lName, email, pw)
+        public Class(string classId, string profId, string profEmail, string profPw, string name, string description, int credits, int tuition,
+            DateTime dateStart, DateTime dateEnd, TimeSpan dateSpan, DateTime time, string location, string crecId, int grade, int max)
         {
-            ClassId = Name +id;
+            ClassId = classId;
+            ProfId = profId;
+            ProfEmail = profEmail;
+            ProfPw = profPw;
             Name = name;
             Description = description;
             Credits = credits;
-            Tuition = 1200 * credits;
-            Email = email;
-            Pw = pw;
+            Tuition = tuition;
             DateStart = dateStart;
             DateEnd = dateEnd;
             DateSpan = dateSpan;
@@ -44,7 +47,7 @@ namespace AccountSample
 
         public override string ToString()
         {
-            return $"{Id}|{Name}|{Description}|{Credits}|{FName}|{LName}|{Email}|{Pw}|{DateStart}|{DateEnd}|{DateSpan}|{Time}|{Location}|{CrecId}|{Grade}|{Max}";
+            return $"{ClassId}|{ProfId}|{ProfEmail}|{ProfPw}|{Name}|{Description}|{Credits}|{Tuition}|{DateStart}|{DateEnd}|{DateSpan}|{Time}|{Location}|{CrecId}|{Max}|{Grade}";
         }
     }
 }

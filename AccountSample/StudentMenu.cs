@@ -17,7 +17,7 @@ namespace AccountSample
             while (split != null)
             {
                 string[] stds = split.Split('|');
-                allStudents.Add(new Student(stds[0], stds[1], stds[2], stds[3], stds[4], int.Parse(stds[5]), stds[6], stds[7], bool.Parse(stds[8])));
+                allStudents.Add(new Student(stds[0], stds[1], stds[2], stds[3], stds[4], int.Parse(stds[5]), int.Parse(stds[6]), stds[7], stds[8], bool.Parse(stds[9])));
                 split = reader.ReadLine();
             }
             reader.Close();
@@ -59,11 +59,11 @@ namespace AccountSample
                     //update tuition and tuitionStatus
                     foreach(Class c in allClasses)
                     {
-                        if ((find == c.Id)||find==c.Name.ToLower())
+                        if ((find == c.ClassId)||find==c.Name.ToLower())
                         {
                             student.Tuition =+ c.Tuition;
                             
-                            student.Transcript=student.Transcript+"&\n"+(c.Id.ToString());
+                            student.Transcript=student.Transcript+"&\n"+(c.ClassId.ToString());
                         }
                     }
                 
@@ -95,6 +95,10 @@ namespace AccountSample
                 paid = true;
             }
             return paid;
+        }
+        public static string StudentID(string fName, string lName)
+        {
+            return (fName + "." + lName).ToString();
         }
 
         public static void Update(List<Student> students)
